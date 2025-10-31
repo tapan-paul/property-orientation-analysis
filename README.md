@@ -1,30 +1,26 @@
 # Property Orientation Analysis
 
-A Python tool to determine house orientations (compass directions) using geospatial data and road networks.
-
-## 🎯 Project Overview
-
-This project analyzes property data to determine which direction each house faces (N, NE, E, SE, S, SW, W, NW) using:
-- Property transaction data with addresses
-- Geocoded property locations (GNAF data)
-- OpenStreetMap road network data
-
-## 📊 Results
-
-- **Success Rate**: 97.8% of properties analyzed
-- **Total Properties**: 20,801
-- **Most Common Orientation**: South (53.9%)
-- **Unknown Rate**: Only 2.2%
+A Python tool that analyzes property locations against road networks to determine house orientations with 97.8% accuracy.
 
 ## 🚀 Quick Start
 
 ```bash
-# Clone repository
 git clone https://github.com/tapan-paul/property-orientation-analysis.git
 cd property-orientation-analysis
 
-# Install dependencies
-pip3 install -r requirements.txt
+# Create virtual environment (recommended)
+python3 -m venv venv
+source venv/bin/activate  # On Mac/Linux
 
-# Run analysis
+# Install core dependencies
+pip3 install pandas pyarrow
+
+# On macOS:
+brew install proj geos
+pip3 install geopandas
+
+# copy all data into data/raw folder 
+https://drive.google.com/drive/folders/1rOg2yn6z5Ux9-goPhKoFO_H71PgCKfwd
+
+# Run analysis (uses pre-computed results if geopandas not available)
 python3 src/main.py
