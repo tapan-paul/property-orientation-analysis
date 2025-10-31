@@ -27,4 +27,4 @@ cd property-orientation-analysis
 pip3 install -r requirements.txt
 
 # Run analysis
-python src/main.py
+python3 src/main.py
