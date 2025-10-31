@@ -1,7 +1,6 @@
 # Property Orientation Analysis
 
 A Python tool that analyzes property locations against road networks to determine house orientations with 97.8% accuracy.
-A Python tool that analyzes property locations against road networks to determine house orientations with 97.8% accuracy.
 
 ## 🚀 Quick Start
 
@@ -23,6 +22,5 @@ pip3 install geopandas
 # copy all data into data/raw folder 
 https://drive.google.com/drive/folders/1rOg2yn6z5Ux9-goPhKoFO_H71PgCKfwd
 
-# Run analysis (uses pre-computed results if geopandas not available)
 # Run analysis (uses pre-computed results if geopandas not available)
 python3 src/main.py
