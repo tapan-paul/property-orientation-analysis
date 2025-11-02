@@ -41,8 +41,20 @@ def main():
         # --- Load data ---
         print("📁 Loading data...")
         transactions = pd.read_parquet(transactions_path)
-        gnaf_prop = pd.read_parquet(gnaf_prop_path)  
-        roads = gpd.read_file(roads_path)
+        gnaf_prop = pd.read_parquet(gnaf_prop_path) 
+        # FIX: Load roads with Fiona workaround
+        print("🛣️ Loading roads data...")
+        try:
+            roads = gpd.read_file(roads_path)
+        except AttributeError as e:
+            if "module 'fiona' has no attribute 'path'" in str(e):
+                print("⚠️ Fiona compatibility issue detected, using workaround...")
+                import fiona
+                # Use fiona directly as workaround
+                with fiona.open(roads_path) as source:
+                    roads = gpd.GeoDataFrame.from_features(source, crs=source.crs)
+            else:
+                raise e 
 
         # --- Convert WKB to geometry objects ---
         print("🔄 Converting WKB to geometries...")

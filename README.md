@@ -12,15 +12,18 @@ cd property-orientation-analysis
 python3 -m venv venv
 source venv/bin/activate  # On Mac/Linux
 
-# Install core dependencies
-pip3 install pandas pyarrow
+# Install dependencies 
+pip3 install -r requirements.txt 
 
-# On macOS:
-brew install proj geos
-pip3 install geopandas
-
-# copy all data into data/raw folder 
+# Download data from Google Drive and place in data/raw/
 https://drive.google.com/drive/folders/1rOg2yn6z5Ux9-goPhKoFO_H71PgCKfwd
+
+### If installation fails
+# Install system dependencies first (macOS)
+brew install proj geos
+
+# Then install packages individually
+pip3 install pandas pyarrow geopandas fiona
 
 # Run analysis (uses pre-computed results if geopandas not available)
 python3 src/main.py
